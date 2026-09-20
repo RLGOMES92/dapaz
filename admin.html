@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#B5485A">
+<title>Painel · Da Paz Confeitaria</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#B5485A;--primary-dark:#8C2D3E;--light:#F9EEE8;--border:#EDD5C8;--dark:#1A0A0A;--mid:#7A4F4F;--green:#166534;--wa:#25D366}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#FFF8F5;color:var(--dark);line-height:1.5;padding-bottom:110px}
+[hidden]{display:none!important}
+.box{max-width:420px;margin:12vh auto 0;padding:32px 24px;background:#fff;border:1.5px solid var(--border);border-radius:24px;text-align:center;box-shadow:0 8px 32px rgba(181,72,90,.12)}
+.box h1{font-size:22px;margin-bottom:6px}
+.box p{font-size:13px;color:var(--mid);margin-bottom:18px}
+input,select,textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;background:#FFF8F5;color:var(--dark);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(181,72,90,.12)}
+textarea{resize:vertical;min-height:70px}
+button{font:inherit;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:none;border-radius:14px;background:var(--primary);color:#fff;font-weight:700;font-size:15px}
+.btn:disabled{opacity:.6}
+.err{color:#B91C1C;font-size:13px;margin-top:12px;min-height:18px}
+header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+header h1{font-size:17px}
+header a{color:#fff;font-size:13px;font-weight:600;background:rgba(255,255,255,.18);padding:7px 12px;border-radius:99px;text-decoration:none}
+main{max-width:640px;margin:0 auto;padding:16px}
+.aviso{background:#FEF3C7;border:1.5px solid #FCD34D;color:#92400E;border-radius:14px;padding:12px 14px;font-size:13px;margin-bottom:14px}
+.dica{font-size:12.5px;color:var(--mid);margin-bottom:6px}
+h2{font-size:18px;margin:26px 0 12px}
+.vazio{font-size:13px;color:var(--mid);margin-bottom:10px}
+.item{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:14px;margin-bottom:12px}
+.item.off{background:#F5EFEC}
+.item.oculto{opacity:.55}
+.top{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.top .nome{font-weight:700}
+.sw{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--mid);white-space:nowrap}
+.sw input{width:20px;height:20px;accent-color:var(--primary)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty .q{text-align:center;font-weight:800;font-size:20px;padding:8px}
+.qty .st{flex:0 0 46px;height:46px;border:none;border-radius:12px;background:var(--light);color:var(--primary-dark);font-size:24px;font-weight:700}
+.qty .esg{flex:0 0 auto;height:46px;padding:0 12px;border:1.5px solid #FCA5A5;border-radius:12px;background:#FEF2F2;color:#B91C1C;font-weight:700;font-size:13px}
+.hint{font-size:11.5px;color:var(--mid);margin:6px 0 0}
+.tag-status{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-top:8px}
+.ok{background:#DCFCE7;color:var(--green)}
+.low{background:#FEF3C7;color:#92400E}
+.zero{background:#FEE2E2;color:#B91C1C}
+.free{background:#E0E7FF;color:#3730A3}
+details{margin-top:12px}
+summary{font-size:13px;font-weight:700;color:var(--primary);cursor:pointer}
+.campos{display:grid;gap:10px;margin-top:10px}
+.campos label{font-size:12px;font-weight:600;color:var(--mid);display:block;margin-bottom:4px}
+.rem{margin-top:6px;background:none;border:1.5px solid #FCA5A5;color:#B91C1C;border-radius:12px;padding:10px;font-weight:700;font-size:13px}
+.add{width:100%;padding:14px;border:2px dashed var(--primary);background:transparent;color:var(--primary);border-radius:14px;font-weight:700;font-size:14px}
+.savebar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1.5px solid var(--border);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;z-index:20;box-shadow:0 -6px 24px rgba(181,72,90,.12)}
+.savebar .msg{flex:1;font-size:13px;font-weight:600;min-height:18px}
+.savebar .btn{width:auto;padding:14px 22px;white-space:nowrap}
+.msg.good{color:var(--green)}
+.msg.bad{color:#B91C1C}
+.msg.pend{color:#92400E}
+</style>
+</head>
+<body>
+
+<div class="box" id="login">
+  <h1>🎂 Painel Da Paz</h1>
+  <p>Entre para editar os sabores e a quantidade do dia.</p>
+  <input type="password" id="senha" placeholder="Senha do painel" autocomplete="current-password">
+  <div class="err" id="login-err"></div>
+  <button class="btn" id="entrar" type="button" style="margin-top:8px">Entrar</button>
+</div>
+
+<div id="app" hidden>
+  <header>
+    <h1>🎂 Cardápio do dia</h1>
+    <a href="/" target="_blank">Ver site</a>
+  </header>
+  <main>
+    <div class="aviso" id="aviso-db" hidden>⚠️ O banco de dados ainda não foi conectado no Vercel, então não dá para salvar. Veja o passo a passo de configuração.</div>
+    <p class="dica">Ajuste a <b>quantidade</b> conforme for vendendo. Quando chegar a 0, o site mostra “Esgotado”. Deixe vazio para não limitar. Depois toque em <b>Salvar</b>.</p>
+    <div id="lista"></div>
+  </main>
+  <div class="savebar">
+    <div class="msg" id="msg"></div>
+    <button class="btn" id="salvar" type="button">💾 Salvar</button>
+  </div>
+</div>
+
+<script>
+var API='/api/cardapio';
+var senha=sessionStorage.getItem('dp_senha')||'';
+var itens=[],sujo=false;
+
+var PADRAO=[
+  {tipo:'pote',nome:'Brigadeiro Gourmet',descricao:'Massa de chocolate, brigadeiro artesanal e granulado nobre. O favorito absoluto!',preco:12,quantidade:null,foto:'img/rosa.jpg',selo:'⭐ Mais Vendido',ativo:true},
+  {tipo:'pote',nome:'Chocolate c/ Morango',descricao:'Creme de chocolate intenso com morangos frescos selecionados. Perfeito para qualquer hora!',preco:12,quantidade:null,foto:'img/casal.jpg',selo:'⭐ Mais Vendido',ativo:true},
+  {tipo:'pote',nome:'Paçoca',descricao:'Creme suave de amendoim com crocante de paçoca artesanal. Sabor marcante e irresistível!',preco:10,quantidade:null,foto:'img/urso.jpg',selo:'',ativo:true},
+  {tipo:'pote',nome:'Ninho',descricao:'Recheio aveludado de Leite Ninho verdadeiro. Leve, cremoso e absolutamente viciante!',preco:10,quantidade:null,foto:'img/stitch.jpg',selo:'',ativo:true},
+  {tipo:'pote',nome:'Prestígio',descricao:'Coco ralado úmido com calda cremosa de chocolate meio amargo. O clássico que nunca sai de moda!',preco:10,quantidade:null,foto:'img/kitkat.jpg',selo:'',ativo:true}
+];
+
+function $(id){return document.getElementById(id);}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function num(v){var s=String(v==null?'':v).replace(/[^\d,.\-]/g,'').replace(',','.');var n=parseFloat(s);return isNaN(n)?null:n;}
+
+function chamar(method,body){
+  var h={'Content-Type':'application/json'};
+  if(senha)h['x-admin-password']=senha;
+  return fetch(API,{method:method,headers:h,body:body?JSON.stringify(body):undefined,cache:'no-store'});
+}
+
+/* ---------- login ---------- */
+function entrar(){
+  var s=$('senha').value||senha;
+  if(!s){$('login-err').textContent='Digite a senha.';return;}
+  senha=s;$('login-err').textContent='';$('entrar').disabled=true;
+  chamar('POST',{acao:'login'}).then(function(r){
+    $('entrar').disabled=false;
+    if(r.status===200){sessionStorage.setItem('dp_senha',senha);abrirApp();}
+    else if(r.status===401){senha='';sessionStorage.removeItem('dp_senha');$('login-err').textContent='Senha incorreta.';}
+    else if(r.status===503){senha='';$('login-err').textContent='A senha do painel ainda não foi configurada no Vercel (ADMIN_PASSWORD).';}
+    else{senha='';$('login-err').textContent='Não foi possível entrar agora. Tente de novo.';}
+  }).catch(function(){$('entrar').disabled=false;senha='';$('login-err').textContent='Sem conexão com o servidor.';});
+}
+$('entrar').onclick=entrar;
+$('senha').onkeydown=function(e){if(e.key==='Enter')entrar();};
+
+function abrirApp(){
+  $('login').hidden=true;$('app').hidden=false;
+  fetch(API,{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+    $('aviso-db').hidden=d.configurado!==false;
+    var base=(d.itens&&Array.isArray(d.itens))?d.itens:PADRAO;
+    itens=JSON.parse(JSON.stringify(base)).map(function(i){if(i.ativo===undefined)i.ativo=true;return i;});
+    render();
+  }).catch(function(){itens=JSON.parse(JSON.stringify(PADRAO));render();msg('Não consegui carregar o cardápio salvo.','bad');});
+}
+
+/* ---------- lista ---------- */
+function status(i){
+  if(i.quantidade===null||i.quantidade===undefined)return ['Sem limite','free'];
+  if(i.quantidade<=0)return ['Esgotado','zero'];
+  if(i.quantidade<=3)return ['Restam '+i.quantidade,'low'];
+  return [i.quantidade+' disponíveis','ok'];
+}
+function pintarStatus(box,i){
+  var s=status(i),t=box.querySelector('.tag-status');
+  t.textContent=s[0];t.className='tag-status '+s[1];
+  box.classList.toggle('off',i.quantidade!==null&&i.quantidade!==undefined&&i.quantidade<=0);
+}
+function marcar(){sujo=true;msg('Alterações não salvas','pend');}
+function msg(t,c){var m=$('msg');m.textContent=t;m.className='msg '+(c||'');}
+
+function linha(i){
+  var box=el('div','item'+(i.ativo===false?' oculto':''));
+
+  var top=el('div','top');
+  var nome=el('input','nome');nome.placeholder='Nome do sabor';nome.value=i.nome||'';
+  nome.oninput=function(){i.nome=nome.value;marcar();};
+  var sw=el('label','sw');var cb=document.createElement('input');cb.type='checkbox';cb.checked=i.ativo!==false;
+  cb.onchange=function(){i.ativo=cb.checked;box.classList.toggle('oculto',!cb.checked);marcar();};
+  sw.appendChild(cb);sw.appendChild(document.createTextNode('Mostrar'));
+  top.appendChild(nome);top.appendChild(sw);box.appendChild(top);
+
+  var qty=el('div','qty');
+  var menos=el('button','st','−');menos.type='button';
+  var q=el('input','q');q.type='number';q.min='0';q.inputMode='numeric';q.placeholder='∞';
+  q.value=(i.quantidade===null||i.quantidade===undefined)?'':i.quantidade;
+  var mais=el('button','st','+');mais.type='button';
+  var esg=el('button','esg','Esgotou');esg.type='button';
+  function set(v){i.quantidade=v;q.value=v===null?'':v;pintarStatus(box,i);marcar();}
+  menos.onclick=function(){set(Math.max(0,(i.quantidade==null?0:i.quantidade)-1));};
+  mais.onclick=function(){set((i.quantidade==null?0:i.quantidade)+1);};
+  esg.onclick=function(){set(0);};
+  q.oninput=function(){var v=q.value===''?null:Math.max(0,parseInt(q.value,10)||0);i.quantidade=v;pintarStatus(box,i);marcar();};
+  qty.appendChild(menos);qty.appendChild(q);qty.appendChild(mais);qty.appendChild(esg);
+  box.appendChild(qty);
+  box.appendChild(el('p','hint','Quantidade vazia = sem limite (sempre disponível)'));
+  box.appendChild(el('span','tag-status',''));
+
+  var det=document.createElement('details');
+  det.appendChild(el('summary',null,'Mais detalhes (preço, descrição, foto…)'));
+  var c=el('div','campos');
+  function campo(rot,input){var w=el('div');w.appendChild(el('label',null,rot));w.appendChild(input);c.appendChild(w);}
+  var tipo=document.createElement('select');
+  [['pote','Bolo de pote'],['bolo','Bolo pronto do dia']].forEach(function(o){var op=el('option',null,o[1]);op.value=o[0];if(i.tipo===o[0])op.selected=true;tipo.appendChild(op);});
+  tipo.onchange=function(){i.tipo=tipo.value;marcar();render();};
+  campo('Onde aparece',tipo);
+  var preco=el('input');preco.inputMode='decimal';preco.placeholder='Ex.: 12';preco.value=i.preco==null?'':String(i.preco).replace('.',',');
+  preco.oninput=function(){i.preco=num(preco.value);marcar();};
+  campo('Preço (R$)',preco);
+  var desc=el('textarea');desc.value=i.descricao||'';desc.oninput=function(){i.descricao=desc.value;marcar();};
+  campo('Descrição',desc);
+  var foto=el('input');foto.placeholder='img/nome-da-foto.jpg';foto.value=i.foto||'';foto.oninput=function(){i.foto=foto.value.trim();marcar();};
+  campo('Foto (caminho da imagem no site)',foto);
+  var selo=el('input');selo.placeholder='Ex.: Novo!  ou  ⭐ Mais Vendido';selo.maxLength=30;selo.value=i.selo||'';selo.oninput=function(){i.selo=selo.value;marcar();};
+  campo('Etiqueta no card (opcional)',selo);
+  det.appendChild(c);
+  var rem=el('button','rem','🗑 Remover este item');rem.type='button';
+  rem.onclick=function(){if(confirm('Remover "'+(i.nome||'este item')+'"?')){itens.splice(itens.indexOf(i),1);marcar();render();}};
+  det.appendChild(rem);
+  box.appendChild(det);
+
+  pintarStatus(box,i);
+  if(i._novo){setTimeout(function(){nome.focus();box.scrollIntoView({behavior:'smooth',block:'center'});},50);delete i._novo;}
+  return box;
+}
+
+function render(){
+  var box=$('lista');box.innerHTML='';
+  [['pote','🍮 Bolos de pote'],['bolo','🎂 Bolos prontos do dia']].forEach(function(g){
+    box.appendChild(el('h2',null,g[1]));
+    var lista=itens.filter(function(i){return i.tipo===g[0];});
+    if(!lista.length)box.appendChild(el('p','vazio','Nenhum item ainda.'));
+    lista.forEach(function(i){box.appendChild(linha(i));});
+    var b=el('button','add','➕ Adicionar '+(g[0]==='pote'?'novo sabor de pote':'bolo do dia'));b.type='button';
+    b.onclick=function(){
+      itens.push({tipo:g[0],nome:'',descricao:'',preco:g[0]==='pote'?10:null,quantidade:g[0]==='pote'?10:1,foto:'',selo:g[0]==='bolo'?'Bolo do dia':'',ativo:true,_novo:true});
+      marcar();render();
+    };
+    box.appendChild(b);
+  });
+}
+
+/* ---------- salvar ---------- */
+$('salvar').onclick=function(){
+  for(var k=0;k<itens.length;k++){if(!String(itens[k].nome).trim()){msg('Preencha o nome de todos os itens.','bad');return;}}
+  var payload=itens.map(function(i){return{tipo:i.tipo,nome:i.nome.trim(),descricao:i.descricao||'',preco:i.preco==null?null:i.preco,quantidade:i.quantidade==null?null:i.quantidade,foto:i.foto||'',selo:i.selo||'',ativo:i.ativo!==false};});
+  var b=$('salvar');b.disabled=true;msg('Salvando…','pend');
+  chamar('POST',{itens:payload}).then(function(r){
+    b.disabled=false;
+    if(r.status===200){sujo=false;msg('✅ Salvo! O site já está atualizado.','good');}
+    else if(r.status===401){msg('Senha incorreta. Entre de novo.','bad');sessionStorage.removeItem('dp_senha');}
+    else if(r.status===503){msg('Banco de dados não conectado no Vercel.','bad');$('aviso-db').hidden=false;}
+    else{msg('Não foi possível salvar. Tente de novo.','bad');}
+  }).catch(function(){b.disabled=false;msg('Sem conexão. Tente de novo.','bad');});
+};
+
+window.addEventListener('beforeunload',function(e){if(sujo){e.preventDefault();e.returnValue='';}});
+
+if(senha){entrar();}
+</script>
+</body>
+</html>

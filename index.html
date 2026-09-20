@@ -504,6 +504,49 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
   #fwa{bottom:18px}
   #fab-chat{bottom:76px}
 }
+
+/* ═══════════════════════════════════════════════════
+   CARRINHO / QUANTIDADE
+═══════════════════════════════════════════════════ */
+.pote-ctl{display:flex;justify-content:flex-end;min-width:0}
+.stepper{display:inline-flex;align-items:center;background:#fff;border:1.5px solid var(--wa);border-radius:10px;overflow:hidden}
+.stepper button{width:30px;height:32px;border:none;background:var(--wa);color:#fff;font-size:18px;font-weight:700;cursor:pointer;line-height:1;font-family:'Inter',sans-serif}
+.stepper button:disabled{background:#C9B8B0;cursor:not-allowed}
+.stepper span{min-width:28px;text-align:center;font-weight:700;font-size:13px;color:var(--dark)}
+.vazio-msg{grid-column:1/-1;text-align:center;font-size:14px;color:var(--mid);padding:24px 12px}
+
+#cart-bar{position:fixed;left:20px;right:86px;bottom:18px;z-index:310;display:none;max-width:440px}
+#cart-bar.show{display:block}
+#cart-open{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--dark);color:#fff;border:none;border-radius:14px;padding:13px 16px;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;box-shadow:0 8px 28px rgba(0,0,0,.3);cursor:pointer;animation:msg-in .3s ease-out}
+#cart-overlay{display:none;position:fixed;inset:0;z-index:420;background:rgba(26,10,10,.65);backdrop-filter:blur(6px);align-items:flex-end;justify-content:center}
+#cart-overlay.open{display:flex}
+#cart-box{width:min(460px,100vw);max-height:92svh;background:#FFF8F5;border-radius:28px 28px 0 0;display:flex;flex-direction:column;overflow:hidden;animation:slide-up .35s cubic-bezier(.32,.72,0,1);box-shadow:0 -8px 48px rgba(181,72,90,.2)}
+.cart-head{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:14px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.cart-head h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff}
+.cart-list{flex:1;overflow-y:auto;padding:6px 16px}
+.cart-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
+.cart-row .nm{flex:1;min-width:0}
+.cart-row .nm b{display:block;font-size:14px;color:var(--dark);line-height:1.25}
+.cart-row .nm small{font-size:11.5px;color:var(--mid)}
+.cart-row .sub{font-weight:700;font-size:13px;color:var(--primary);min-width:62px;text-align:right}
+.cart-empty{text-align:center;color:var(--mid);font-size:14px;padding:32px 8px}
+.cart-foot{padding:12px 16px 20px;background:#fff;border-top:1px solid var(--border);flex-shrink:0;display:flex;flex-direction:column;gap:8px}
+.cart-total-row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--mid)}
+.cart-total-row strong{font-family:'Playfair Display',serif;font-size:24px;color:var(--primary)}
+.cart-inp.err{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.12)}
+#cart-send{width:100%;margin:0}
+#cart-send:disabled{background:#C9B8B0;box-shadow:none;cursor:not-allowed}
+.cart-clear{background:none;border:none;color:var(--mid);font-size:12px;font-weight:600;cursor:pointer;padding:6px;font-family:'Inter',sans-serif}
+@media(max-width:768px){#cart-bar{left:14px;right:74px}}
+.pote-price{white-space:nowrap}
+@media(max-width:768px){
+  .pote-foot{flex-direction:column;align-items:stretch;gap:8px}
+  .pote-ctl{justify-content:stretch}
+  .pote-ctl .pote-order{width:100%;justify-content:center}
+  .pote-ctl .stepper{width:100%}
+  .pote-ctl .stepper button{flex:0 0 40px;height:34px}
+  .pote-ctl .stepper span{flex:1}
+}
 </style>
 </head>
 <body>
@@ -548,7 +591,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
       <a href="#depoimentos" onclick="closeMenu()">⭐ Avaliações</a>
       <a href="https://www.instagram.com/dapaz_confeitaria" target="_blank" rel="noopener" class="ig-grad" style="color:#fff;text-align:center">📸 Ver nosso Instagram</a>
       <div class="mob-cta" style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
-        <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary" style="justify-content:center">🍮 Pedir Bolo de Pote</a>
+        <a href="#pote" onclick="closeMenu()" class="btn btn-primary" style="justify-content:center;color:#fff">🍮 Pedir Bolo de Pote</a>
         <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20um%20bolo%20personalizado%20por%20encomenda." target="_blank" class="btn btn-accent" style="justify-content:center">🎉 Encomendar Bolo</a>
       </div>
     </div>
@@ -573,7 +616,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
           <span class="slide-price-val">R$ 12</span>
         </div>
         <div class="slide-actions">
-          <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary btn-lg">🍮 Pedir Agora</a>
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
           <button class="btn btn-ghost btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">Ver Cardápio</button>
         </div>
       </div>
@@ -591,7 +634,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
           <span class="slide-price-val">R$ 12</span>
         </div>
         <div class="slide-actions">
-          <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary btn-lg">🍮 Pedir Agora</a>
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
           <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20um%20bolo%20personalizado%20por%20encomenda." target="_blank" class="btn btn-ghost btn-lg">🎉 Encomendar</a>
         </div>
       </div>
@@ -609,7 +652,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
           <span class="slide-price-val">R$ 10</span>
         </div>
         <div class="slide-actions">
-          <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary btn-lg">🍮 Pedir Agora</a>
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
           <button class="btn btn-ghost btn-lg" onclick="document.getElementById('encomendas').scrollIntoView({behavior:'smooth'})">Ver Encomendas</button>
         </div>
       </div>
@@ -627,7 +670,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
           <span class="slide-price-val">R$ 10</span>
         </div>
         <div class="slide-actions">
-          <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary btn-lg">🍮 Pedir Agora</a>
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
           <button class="btn btn-ghost btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">Ver Todos</button>
         </div>
       </div>
@@ -645,7 +688,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
           <span class="slide-price-val">R$ 10</span>
         </div>
         <div class="slide-actions">
-          <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary btn-lg">🍮 Pedir Agora</a>
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
           <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20um%20bolo%20personalizado%20por%20encomenda." target="_blank" class="btn btn-ghost btn-lg">🎉 Encomendas</a>
         </div>
       </div>
@@ -694,7 +737,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
     <div class="section-head">
       <span class="section-label">🍮 Pronta Entrega</span>
       <h2 class="section-title">Bolos de Pote — <em>Fresquinhos</em></h2>
-      <p class="section-sub">Feitos no dia, com ingredientes selecionados. Tem dúvida? É só chamar no WhatsApp!</p>
+      <p class="section-sub">Feitos no dia. Escolha os sabores, ajuste as quantidades e envie seu pedido pelo WhatsApp!</p>
     </div>
 
     <div class="pote-status" id="pote-status"></div>
@@ -948,6 +991,29 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
 <!-- ═══════════════════════════════════════════════
      CHAT WIDGET — Clara
 ═══════════════════════════════════════════════ -->
+<!-- Carrinho -->
+<div id="cart-bar"><button id="cart-open" type="button"><span>🛒 <span id="cart-count">0 itens</span></span><span>Ver pedido · <span id="cart-total">R$ 0,00</span></span></button></div>
+
+<div id="cart-overlay">
+  <div id="cart-box">
+    <div class="chat-handle"><span></span></div>
+    <div class="cart-head">
+      <h3>🛒 Seu pedido</h3>
+      <button class="chat-close" id="cart-close" type="button" aria-label="Fechar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-list" id="cart-list"></div>
+    <div class="cart-foot">
+      <div class="cart-total-row"><span>Total</span><strong id="cart-total2">R$ 0,00</strong></div>
+      <input class="chat-input cart-inp" id="cart-nome" type="text" placeholder="Seu nome *" maxlength="60">
+      <input class="chat-input cart-inp" id="cart-obs" type="text" placeholder="Observação (dia/horário, recado…)" maxlength="160">
+      <button class="wa-confirm-btn" id="cart-send" type="button"><svg width="18" height="18" fill="currentColor"><use href="#i-wa"/></svg> Enviar pedido no WhatsApp</button>
+      <button class="cart-clear" id="cart-clear" type="button">Limpar pedido</button>
+    </div>
+  </div>
+</div>
+
 <div id="chat-overlay" onclick="chatCheckClose(event)">
   <div id="chat-box">
     <div class="chat-handle"><span></span></div>
@@ -1042,12 +1108,10 @@ function closeMenu(){document.getElementById('mob-menu').classList.remove('open'
 
 
 // ══════════════════════════════════════════════════
-//  CARDÁPIO DO DIA (lido da planilha Google)
-//  Cole abaixo o link CSV publicado da sua planilha.
-//  Se ficar vazio, o site usa a lista padrão (PADRAO).
+//  CARDÁPIO DO DIA + CARRINHO
+//  Os dados vêm de /api/cardapio (editados em /admin.html).
+//  Se a API não responder, usa a lista PADRAO abaixo.
 // ══════════════════════════════════════════════════
-var PLANILHA_URL='';
-
 var PADRAO=[
   {tipo:'pote',nome:'Brigadeiro Gourmet',descricao:'Massa de chocolate, brigadeiro artesanal e granulado nobre. O favorito absoluto!',preco:12,quantidade:null,foto:'img/rosa.jpg',selo:'⭐ Mais Vendido'},
   {tipo:'pote',nome:'Chocolate c/ Morango',descricao:'Creme de chocolate intenso com morangos frescos selecionados. Perfeito para qualquer hora!',preco:12,quantidade:null,foto:'img/casal.jpg',selo:'⭐ Mais Vendido'},
@@ -1058,80 +1122,132 @@ var PADRAO=[
 
 (function(){
   var WA_NUM='5511951799052';
-  var CHAVE='dapaz_cardapio';
+  var K_CARD='dapaz_cardapio',K_CART='dapaz_carrinho',K_NOME='dapaz_nome';
+  var itens=[],porChave={},carrinho={},ultimo='';
 
-  function semAcento(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
-
-  function parseCSV(text){
-    var rows=[],row=[],cur='',q=false,i,c;
-    text=text.replace(/^\uFEFF/,'');
-    for(i=0;i<text.length;i++){
-      c=text[i];
-      if(q){
-        if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else q=false; }
-        else cur+=c;
-      } else if(c==='"'){ q=true; }
-      else if(c===','){ row.push(cur);cur=''; }
-      else if(c==='\n'||c==='\r'){
-        if(c==='\r'&&text[i+1]==='\n')i++;
-        row.push(cur);cur='';rows.push(row);row=[];
-      } else cur+=c;
-    }
-    if(cur!==''||row.length){row.push(cur);rows.push(row);}
-    return rows;
-  }
-
-  function num(v){
-    var s=String(v==null?'':v).replace(/[^\d,.\-]/g,'').replace(',','.');
-    var n=parseFloat(s);
-    return isNaN(n)?null:n;
-  }
-
-  function toItens(rows){
-    if(rows.length<2)return [];
-    var head=rows[0].map(function(k){return semAcento(k).replace(/[^a-z]/g,'');}),out=[];
-    for(var r=1;r<rows.length;r++){
-      var o={};
-      head.forEach(function(k,i){o[k]=(rows[r][i]||'').trim();});
-      if(!o.nome)continue;
-      var ativo=semAcento(o.ativo);
-      if(ativo==='nao'||ativo==='n'||ativo==='0'||ativo==='false')continue;
-      var tipo=semAcento(o.tipo)==='bolo'?'bolo':'pote';
-      out.push({
-        tipo:tipo,
-        nome:o.nome,
-        descricao:o.descricao||'',
-        preco:num(o.preco),
-        quantidade:o.quantidade===''?null:num(o.quantidade),
-        foto:o.foto||'',
-        selo:o.selo||''
-      });
-    }
-    return out;
-  }
-
-  function fmtPreco(n){
-    if(n==null)return 'Consulte';
-    return 'R$ '+(Math.round(n)===n?String(n):n.toFixed(2).replace('.',','));
-  }
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+  function pad(n){return String(n).padStart(2,'0');}
+  function chave(i){return i.tipo+'|'+i.nome;}
+  function esgotado(i){return i.quantidade!==null&&i.quantidade!==undefined&&i.quantidade<=0;}
+  function maxQtd(i){return (i.quantidade===null||i.quantidade===undefined)?99:Math.max(0,i.quantidade);}
+  function fmtPreco(n){if(n==null)return 'Consulte';return 'R$ '+(Math.round(n)===n?String(n):n.toFixed(2).replace('.',','));}
+  function fmtMoney(n){return 'R$ '+n.toFixed(2).replace('.',',');}
   window.fmtPreco=fmtPreco;
-
-  function esgotado(i){return i.quantidade!==null&&i.quantidade<=0;}
   window.itemEsgotado=esgotado;
 
-  function el(tag,cls,txt){
-    var e=document.createElement(tag);
-    if(cls)e.className=cls;
-    if(txt!=null)e.textContent=txt;
-    return e;
+  /* ---------- carrinho ---------- */
+  function lerCarrinho(){try{var c=JSON.parse(localStorage.getItem(K_CART));if(c&&typeof c==='object')carrinho=c;}catch(e){}}
+  function gravarCarrinho(){try{localStorage.setItem(K_CART,JSON.stringify(carrinho));}catch(e){}}
+  function validarCarrinho(){
+    Object.keys(carrinho).forEach(function(k){
+      var i=porChave[k];
+      if(!i||esgotado(i)){delete carrinho[k];return;}
+      var m=maxQtd(i);
+      if(carrinho[k]>m)carrinho[k]=m;
+      if(!(carrinho[k]>0))delete carrinho[k];
+    });
+    gravarCarrinho();
+  }
+  function mudar(k,d){
+    var i=porChave[k];if(!i)return;
+    var q=Math.max(0,Math.min(maxQtd(i),(carrinho[k]||0)+d));
+    if(q===0)delete carrinho[k];else carrinho[k]=q;
+    gravarCarrinho();atualizarUI();
+  }
+  function resumo(){
+    var n=0,t=0,semPreco=false;
+    Object.keys(carrinho).forEach(function(k){
+      var i=porChave[k],q=carrinho[k];if(!i)return;
+      n+=q;if(i.preco==null)semPreco=true;else t+=i.preco*q;
+    });
+    return {n:n,t:t,semPreco:semPreco};
   }
 
-  function card(i){
-    var off=esgotado(i);
-    var poucos=!off&&i.quantidade!==null&&i.quantidade<=3;
-    var art=el('article','pote-card'+(off?' off':''));
+  function stepper(k,q,max){
+    var s=el('div','stepper');
+    var m=el('button',null,'−');m.type='button';m.setAttribute('aria-label','Diminuir');m.onclick=function(){mudar(k,-1);};
+    var n=el('span',null,String(q));
+    var p=el('button',null,'+');p.type='button';p.setAttribute('aria-label','Aumentar');p.disabled=q>=max;p.onclick=function(){mudar(k,1);};
+    s.appendChild(m);s.appendChild(n);s.appendChild(p);
+    return s;
+  }
+  function pintarCtl(ctl){
+    var k=ctl.getAttribute('data-k'),i=porChave[k];
+    ctl.innerHTML='';
+    if(!i)return;
+    if(esgotado(i)){var b=el('button','pote-order','Esgotado');b.disabled=true;ctl.appendChild(b);return;}
+    var q=carrinho[k]||0;
+    if(!q){
+      var a=el('button','pote-order','＋ Adicionar');a.type='button';a.onclick=function(){mudar(k,1);};
+      ctl.appendChild(a);
+    } else ctl.appendChild(stepper(k,q,maxQtd(i)));
+  }
 
-    if(i.selo&&!off){art.appendChild(el('div','pote-badge',i.selo));}
+  function renderCarrinho(){
+    var list=document.getElementById('cart-list');
+    list.innerHTML='';
+    var ks=Object.keys(carrinho).filter(function(k){return porChave[k];});
+    if(!ks.length){list.appendChild(el('div','cart-empty','Seu pedido está vazio. Adicione os sabores que você quiser! 🍮'));}
+    ks.forEach(function(k){
+      var i=porChave[k],q=carrinho[k];
+      var row=el('div','cart-row');
+      var nm=el('div','nm');
+      nm.appendChild(el('b',null,i.nome));
+      nm.appendChild(el('small',null,fmtPreco(i.preco)+(i.tipo==='bolo'?' · bolo do dia':'')));
+      row.appendChild(nm);
+      row.appendChild(stepper(k,q,maxQtd(i)));
+      row.appendChild(el('div','sub',i.preco==null?'—':fmtMoney(i.preco*q)));
+      list.appendChild(row);
+    });
+    var r=resumo();
+    document.getElementById('cart-total2').textContent=fmtMoney(r.t)+(r.semPreco?' +':'');
+    document.getElementById('cart-send').disabled=!ks.length;
+  }
+
+  function atualizarUI(){
+    var ctls=document.querySelectorAll('[data-k]');
+    for(var x=0;x<ctls.length;x++)pintarCtl(ctls[x]);
+    var r=resumo();
+    document.getElementById('cart-bar').classList.toggle('show',r.n>0);
+    document.getElementById('cart-count').textContent=r.n+(r.n===1?' item':' itens');
+    document.getElementById('cart-total').textContent=fmtMoney(r.t)+(r.semPreco?'+':'');
+    if(document.getElementById('cart-overlay').classList.contains('open'))renderCarrinho();
+  }
+
+  function abrirCarrinho(){
+    try{var n=localStorage.getItem(K_NOME);if(n&&!document.getElementById('cart-nome').value)document.getElementById('cart-nome').value=n;}catch(e){}
+    renderCarrinho();
+    document.getElementById('cart-overlay').classList.add('open');
+  }
+  function fecharCarrinho(){document.getElementById('cart-overlay').classList.remove('open');}
+
+  function enviar(){
+    var inp=document.getElementById('cart-nome');
+    var nome=inp.value.trim(),obs=document.getElementById('cart-obs').value.trim();
+    if(!nome){inp.classList.add('err');inp.focus();return;}
+    inp.classList.remove('err');
+    try{localStorage.setItem(K_NOME,nome);}catch(e){}
+    var linhas=[];
+    Object.keys(carrinho).forEach(function(k){
+      var i=porChave[k],q=carrinho[k];if(!i)return;
+      linhas.push((i.tipo==='bolo'?'🎂 ':'🍮 ')+q+'x '+i.nome+(i.preco!=null?' — '+fmtMoney(i.preco*q):' — a consultar'));
+    });
+    if(!linhas.length)return;
+    var r=resumo();
+    var msg=['Olá, Da Paz Confeitaria! 🎂','Quero fazer um pedido:','',linhas.join('\n'),'',
+      '💰 *Total:* '+fmtMoney(r.t)+(r.semPreco?' (+ itens a consultar)':''),
+      '👤 *Nome:* '+nome];
+    if(obs)msg.push('📝 *Obs:* '+obs);
+    msg.push('','Pode confirmar a disponibilidade? 💕');
+    window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg.join('\n')),'_blank');
+  }
+
+  /* ---------- cards ---------- */
+  function card(i){
+    var k=chave(i),off=esgotado(i);
+    var poucos=!off&&i.quantidade!==null&&i.quantidade!==undefined&&i.quantidade<=3;
+    var art=el('article','pote-card'+(off?' off':''));
+    if(i.selo&&!off)art.appendChild(el('div','pote-badge',i.selo));
 
     var imgw=el('div','pote-img');
     var ph=el('div','pote-ph',i.tipo==='bolo'?'🎂':'🍮');
@@ -1150,41 +1266,41 @@ var PADRAO=[
     var body=el('div','pote-body');
     body.appendChild(el('h3','pote-name',i.nome));
     if(i.descricao)body.appendChild(el('p','pote-desc',i.descricao));
-    if(i.quantidade!==null){
+    if(i.quantidade!==null&&i.quantidade!==undefined){
       var st=off?'Esgotado por hoje':(poucos?'🔥 Restam só '+i.quantidade:'✅ '+i.quantidade+' disponíveis hoje');
       body.appendChild(el('div','pote-stock'+(off?' off':(poucos?' low':'')),st));
     }
     var foot=el('div','pote-foot');
     foot.appendChild(el('span','pote-price',fmtPreco(i.preco)));
-    var btn=el('button','pote-order');
-    if(off){
-      btn.disabled=true;btn.textContent='Esgotado';
-    } else {
-      btn.innerHTML='<svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg> Pedir';
-      btn.onclick=function(){
-        var txt=i.tipo==='bolo'
-          ? 'Olá! Quero o '+i.nome+(i.preco!=null?' ('+fmtPreco(i.preco)+')':'')+'.'
-          : 'Olá! Quero 1 Bolo de Pote de '+i.nome+(i.preco!=null?' ('+fmtPreco(i.preco)+')':'')+'.';
-        window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(txt),'_blank');
-      };
-    }
-    foot.appendChild(btn);
+    var ctl=el('div','pote-ctl');ctl.setAttribute('data-k',k);
+    foot.appendChild(ctl);
     body.appendChild(foot);
     art.appendChild(body);
     return art;
   }
 
-  function ordenar(arr){
-    return arr.filter(function(i){return !esgotado(i);}).concat(arr.filter(esgotado));
+  function ordenar(arr){return arr.filter(function(i){return !esgotado(i);}).concat(arr.filter(esgotado));}
+
+  function fmtQuando(iso){
+    var d=new Date(iso);if(isNaN(d.getTime()))return '';
+    var hm=pad(d.getHours())+':'+pad(d.getMinutes());
+    return d.toDateString()===new Date().toDateString()?'hoje às '+hm:pad(d.getDate())+'/'+pad(d.getMonth()+1)+' às '+hm;
   }
 
-  function render(itens){
-    window.CARDAPIO=itens;
-    var potes=ordenar(itens.filter(function(i){return i.tipo==='pote';}));
-    var bolos=ordenar(itens.filter(function(i){return i.tipo==='bolo';}));
+  function aplicar(lista,quando){
+    var assinatura=JSON.stringify(lista)+'|'+(quando||'');
+    if(assinatura===ultimo)return;
+    ultimo=assinatura;
 
-    var g=document.getElementById('pote-grid');
-    g.innerHTML='';
+    itens=lista;window.CARDAPIO=lista;porChave={};
+    lista.forEach(function(i){porChave[chave(i)]=i;});
+    validarCarrinho();
+
+    var potes=ordenar(lista.filter(function(i){return i.tipo==='pote';}));
+    var bolos=ordenar(lista.filter(function(i){return i.tipo==='bolo';}));
+
+    var g=document.getElementById('pote-grid');g.innerHTML='';
+    if(!potes.length)g.appendChild(el('div','vazio-msg','Hoje não temos bolos de pote disponíveis. Chame a gente no WhatsApp! 💬'));
     potes.forEach(function(i){g.appendChild(card(i));});
 
     var w=document.getElementById('dia-wrap'),dg=document.getElementById('dia-grid');
@@ -1193,31 +1309,39 @@ var PADRAO=[
     w.style.display=bolos.length?'block':'none';
 
     var s=document.getElementById('pote-status');
-    if(PLANILHA_URL){
-      var d=new Date();
-      s.textContent='🕒 Disponibilidade de hoje · atualizado às '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
-    } else s.textContent='';
+    var q=quando?fmtQuando(quando):'';
+    s.textContent=q?'🕒 Disponibilidade atualizada '+q:'';
+
+    atualizarUI();
   }
 
   function carregar(){
-    if(!PLANILHA_URL){render(PADRAO);return;}
-    var url=PLANILHA_URL+(PLANILHA_URL.indexOf('?')>-1?'&':'?')+'t='+Date.now();
-    fetch(url).then(function(r){if(!r.ok)throw new Error('http');return r.text();})
-    .then(function(txt){
-      var itens=toItens(parseCSV(txt));
-      if(!itens.length)throw new Error('vazio');
-      try{localStorage.setItem(CHAVE,JSON.stringify(itens));}catch(e){}
-      render(itens);
+    fetch('/api/cardapio',{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('http');return r.json();})
+    .then(function(d){
+      if(d&&Array.isArray(d.itens)){
+        var ativos=d.itens.filter(function(i){return i.ativo!==false;});
+        try{localStorage.setItem(K_CARD,JSON.stringify({itens:ativos,q:d.atualizadoEm}));}catch(e){}
+        aplicar(ativos,d.atualizadoEm);
+      } else aplicar(PADRAO,null);
     })
     .catch(function(){
-      var salvo=null;
-      try{salvo=JSON.parse(localStorage.getItem(CHAVE));}catch(e){}
-      render(salvo&&salvo.length?salvo:PADRAO);
+      var s=null;try{s=JSON.parse(localStorage.getItem(K_CARD));}catch(e){}
+      if(s&&Array.isArray(s.itens))aplicar(s.itens,s.q);else aplicar(PADRAO,null);
     });
   }
-  window.carregarCardapio=carregar;
+
+  document.getElementById('cart-open').onclick=abrirCarrinho;
+  document.getElementById('cart-close').onclick=fecharCarrinho;
+  document.getElementById('cart-overlay').addEventListener('click',function(e){if(e.target===this)fecharCarrinho();});
+  document.getElementById('cart-send').onclick=enviar;
+  document.getElementById('cart-nome').addEventListener('input',function(){this.classList.remove('err');});
+  document.getElementById('cart-clear').onclick=function(){carrinho={};gravarCarrinho();atualizarUI();};
+
+  lerCarrinho();
   carregar();
-  setInterval(carregar,120000);
+  setInterval(carregar,60000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)carregar();});
 })();
 
 // ── CHAT — Clara ────────────────────────────────

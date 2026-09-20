@@ -92,30 +92,26 @@ var senha=sessionStorage.getItem('dp_senha')||'';
 var itens=[],sujo=false;
 
 var PADRAO=[
-  {tipo:'pote',nome:'Brigadeiro Gourmet',descricao:'Massa de chocolate, brigadeiro artesanal e granulado nobre. O favorito absoluto!',preco:12,quantidade:null,foto:'img/rosa.jpg',selo:'⭐ Mais Vendido',ativo:true},
-  {tipo:'pote',nome:'Chocolate c/ Morango',descricao:'Creme de chocolate intenso com morangos frescos selecionados. Perfeito para qualquer hora!',preco:12,quantidade:null,foto:'img/casal.jpg',selo:'⭐ Mais Vendido',ativo:true},
-  {tipo:'pote',nome:'Paçoca',descricao:'Creme suave de amendoim com crocante de paçoca artesanal. Sabor marcante e irresistível!',preco:10,quantidade:null,foto:'img/urso.jpg',selo:'',ativo:true},
-  {tipo:'pote',nome:'Ninho',descricao:'Recheio aveludado de Leite Ninho verdadeiro. Leve, cremoso e absolutamente viciante!',preco:10,quantidade:null,foto:'img/stitch.jpg',selo:'',ativo:true},
-  {tipo:'pote',nome:'Prestígio',descricao:'Coco ralado úmido com calda cremosa de chocolate meio amargo. O clássico que nunca sai de moda!',preco:10,quantidade:null,foto:'img/kitkat.jpg',selo:'',ativo:true}
+  {tipo:'pote',nome:'Brigadeiro Gourmet',descricao:'Massa de chocolate, brigadeiro artesanal e granulado nobre. O favorito absoluto!',preco:12,quantidade:null,foto:'img/choco.jpeg',selo:'⭐ Mais Vendido',ativo:true},
+  {tipo:'pote',nome:'Chocolate c/ Morango',descricao:'Creme de chocolate intenso com morangos frescos selecionados. Perfeito para qualquer hora!',preco:12,quantidade:null,foto:'img/chocola.jpeg',selo:'⭐ Mais Vendido',ativo:true},
+  {tipo:'pote',nome:'Paçoca',descricao:'Creme suave de amendoim com crocante de paçoca artesanal. Sabor marcante e irresistível!',preco:10,quantidade:null,foto:'img/paç.jpeg',selo:'',ativo:true},
+  {tipo:'pote',nome:'Ninho',descricao:'Recheio aveludado de Leite Ninho verdadeiro. Leve, cremoso e absolutamente viciante!',preco:10,quantidade:null,foto:'img/pinhores.jpeg',selo:'',ativo:true},
+  {tipo:'pote',nome:'Prestígio',descricao:'Coco ralado úmido com calda cremosa de chocolate meio amargo. O clássico que nunca sai de moda!',preco:10,quantidade:null,foto:'img/prest.jpeg',selo:'',ativo:true}
 ];
-<<<<<<< HEAD
-=======
 var FOTOS_PADRAO={};
 PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
->>>>>>> a9e8a2e (Corrige imagens do cardapio com API)
 
 function $(id){return document.getElementById(id);}
 function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
 function num(v){var s=String(v==null?'':v).replace(/[^\d,.\-]/g,'').replace(',','.');var n=parseFloat(s);return isNaN(n)?null:n;}
-<<<<<<< HEAD
-=======
 function fotoCorrigida(i){
   var foto=String(i.foto||'').trim();
   if(/^\/img\//i.test(foto))foto=foto.slice(1);
-  if(!/^(img\/|https?:\/\/)/i.test(foto))foto=FOTOS_PADRAO[String(i.nome||'').toLowerCase()]||'';
+  var nome=String(i.nome||'').toLowerCase();
+  if(FOTOS_PADRAO[nome])foto=FOTOS_PADRAO[nome];
+  else if(!/^(img\/|https?:\/\/)/i.test(foto))foto='';
   return foto;
 }
->>>>>>> a9e8a2e (Corrige imagens do cardapio com API)
 
 function chamar(method,body){
   var h={'Content-Type':'application/json'};
@@ -144,11 +140,7 @@ function abrirApp(){
   fetch(API,{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
     $('aviso-db').hidden=d.configurado!==false;
     var base=(d.itens&&Array.isArray(d.itens))?d.itens:PADRAO;
-<<<<<<< HEAD
-    itens=JSON.parse(JSON.stringify(base)).map(function(i){if(i.ativo===undefined)i.ativo=true;return i;});
-=======
     itens=JSON.parse(JSON.stringify(base)).map(function(i){if(i.ativo===undefined)i.ativo=true;i.foto=fotoCorrigida(i);return i;});
->>>>>>> a9e8a2e (Corrige imagens do cardapio com API)
     render();
   }).catch(function(){itens=JSON.parse(JSON.stringify(PADRAO));render();msg('Não consegui carregar o cardápio salvo.','bad');});
 }

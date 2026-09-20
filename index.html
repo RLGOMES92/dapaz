@@ -460,6 +460,50 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
   .como-box{padding:28px 20px}
   .ig-ctas{flex-direction:column;align-items:center}
 }
+
+/* ═══════════════════════════════════════════════════
+   DISPONIBILIDADE DO DIA
+═══════════════════════════════════════════════════ */
+.pote-status{text-align:center;font-size:12px;font-weight:600;color:var(--mid);margin:-28px 0 28px;min-height:18px}
+.sub-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,32px);font-weight:700;color:var(--dark);text-align:center;margin:64px 0 6px}
+.sub-note{text-align:center;font-size:13px;color:var(--mid);margin-bottom:28px}
+.pote-card.off{opacity:.8}
+.pote-card.off .pote-img img{filter:grayscale(1)}
+.pote-off{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(26,10,10,.5);color:#fff;font-weight:800;letter-spacing:.16em;font-size:13px;text-transform:uppercase}
+.pote-low{position:absolute;top:12px;right:12px;z-index:3;background:#F59E0B;color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+.pote-stock{font-size:11px;font-weight:700;color:#166534;margin:-6px 0 12px}
+.pote-stock.low{color:#B45309}
+.pote-stock.off{color:#9A3412}
+.pote-order[disabled]{background:#C9B8B0;cursor:not-allowed;transform:none}
+.pote-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#FFF0EC,#FCE4EC)}
+
+/* ═══════════════════════════════════════════════════
+   AJUSTES MOBILE (evita cortes)
+═══════════════════════════════════════════════════ */
+h1,h2,h3,h4,p{overflow-wrap:break-word}
+@media(max-width:768px){
+  section{padding:56px 0}
+  .btn{white-space:normal;text-align:center}
+  .btn-lg{padding:15px 22px}
+  .enc-destaque,.pote-cta-box{flex-wrap:nowrap;padding:28px 20px;gap:20px}
+  .enc-destaque > div,.pote-cta-box > div{min-width:0;width:100%}
+  .enc-destaque .btn,.pote-cta-box .btn,.vitrine-cta .btn{width:100%;flex-shrink:1!important}
+  .enc-destaque h3{font-size:26px}
+  .pote-cta-box h3{font-size:21px}
+  .vitrine{columns:2;column-gap:10px}
+  .vitrine figure{margin-bottom:10px;border-radius:14px}
+  .vitrine figcaption{left:8px;bottom:8px;font-size:9px;padding:3px 9px}
+  .como-box{padding:24px 16px}
+  .pote-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .pote-body{padding:12px}
+  .pote-name{font-size:15px}
+  .pote-desc{font-size:11px}
+  .pote-price{font-size:20px}
+  .pote-order{padding:8px 10px;font-size:11px}
+  #fwa,#fab-chat{width:50px;height:50px;right:14px}
+  #fwa{bottom:18px}
+  #fab-chat{bottom:76px}
+}
 </style>
 </head>
 <body>
@@ -519,14 +563,14 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
 
     <!-- Slide 1 — Brigadeiro -->
     <div class="slide active">
-      <div class="slide-bg"><img src="img/choco.jpeg" alt="Bolo de Pote Brigadeiro Gourmet Da Paz Confeitaria" loading="eager"></div>
+      <div class="slide-bg"><img src="img/rosa.jpg" alt="Bolo de Pote Brigadeiro Gourmet Da Paz Confeitaria" loading="eager"></div>
       <div class="slide-content">
         <div class="slide-eyebrow"><span></span> Pronta Entrega</div>
         <h2 class="slide-title">Brigadeiro<br><em>Gourmet</em></h2>
         <p class="slide-desc">Massa fofinha de chocolate com camadas generosas de brigadeiro artesanal e granulado nobre. Feito hoje!</p>
         <div class="slide-price-tag">
           <span class="slide-price-from">por apenas</span>
-          <span class="slide-price-val">R$ 13</span>
+          <span class="slide-price-val">R$ 12</span>
         </div>
         <div class="slide-actions">
           <a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20Da%20Paz%20Confeitaria!%20Gostaria%20de%20pedir%20bolos%20de%20pote." target="_blank" class="btn btn-primary btn-lg">🍮 Pedir Agora</a>
@@ -537,7 +581,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
 
     <!-- Slide 2 — Chocolate com Morango -->
     <div class="slide">
-      <div class="slide-bg"><img src="img/chocola.jpeg" alt="Bolo de Pote Chocolate com Morango" loading="lazy"></div>
+      <div class="slide-bg"><img src="img/casal.jpg" alt="Bolo de Pote Chocolate com Morango" loading="lazy"></div>
       <div class="slide-content">
         <div class="slide-eyebrow"><span></span> Mais Pedido do Mês</div>
         <h2 class="slide-title">Chocolate<br>c/ <em>Morango</em></h2>
@@ -555,7 +599,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
 
     <!-- Slide 3 — Paçoca -->
     <div class="slide">
-      <div class="slide-bg"><img src="img/paç.jpeg" alt="Bolo de Pote Paçoca" loading="lazy"></div>
+      <div class="slide-bg"><img src="img/urso.jpg" alt="Bolo de Pote Paçoca" loading="lazy"></div>
       <div class="slide-content">
         <div class="slide-eyebrow"><span></span> Sabor Exclusivo</div>
         <h2 class="slide-title"><em>Paçoca</em><br>Artesanal</h2>
@@ -573,7 +617,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
 
     <!-- Slide 4 — Ninho -->
     <div class="slide">
-      <div class="slide-bg"><img src="img/pinhores.jpeg" alt="Bolo de Pote Ninho" loading="lazy"></div>
+      <div class="slide-bg"><img src="img/stitch.jpg" alt="Bolo de Pote Ninho" loading="lazy"></div>
       <div class="slide-content">
         <div class="slide-eyebrow"><span></span> Favorito das Crianças</div>
         <h2 class="slide-title"><em>Ninho</em><br>Cremoso</h2>
@@ -591,7 +635,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
 
     <!-- Slide 5 — Prestígio -->
     <div class="slide">
-      <div class="slide-bg"><img src="img/prest.jpeg" alt="Bolo de Pote Prestígio" loading="lazy"></div>
+      <div class="slide-bg"><img src="img/kitkat.jpg" alt="Bolo de Pote Prestígio" loading="lazy"></div>
       <div class="slide-content">
         <div class="slide-eyebrow"><span></span> Clássico Irresistível</div>
         <h2 class="slide-title"><em>Prestígio</em><br>Especial</h2>
@@ -653,88 +697,13 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
       <p class="section-sub">Feitos no dia, com ingredientes selecionados. Tem dúvida? É só chamar no WhatsApp!</p>
     </div>
 
-    <div class="pote-grid">
-      <!-- Brigadeiro Gourmet -->
-      <article class="pote-card">
-        <div class="pote-badge">⭐ Mais Vendido</div>
-        <div class="pote-img"><img src="img/choco.jpeg" alt="Bolo de Pote Brigadeiro Gourmet" loading="lazy"></div>
-        <div class="pote-body">
-          <h3 class="pote-name">Brigadeiro Gourmet</h3>
-          <p class="pote-desc">Massa de chocolate, brigadeiro artesanal e granulado nobre. O favorito absoluto!</p>
-          <div class="pote-foot">
-            <span class="pote-price">R$ 12</span>
-            <button class="pote-order" onclick="window.open('https://wa.me/5511951799052?text=Ol%C3%A1!%20Quero%201%20Bolo%20de%20Pote%20de%20Brigadeiro%20Gourmet%20(R%24%2012%2C00).','_blank')">
-              <svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg>
-              Pedir
-            </button>
-          </div>
-        </div>
-      </article>
+    <div class="pote-status" id="pote-status"></div>
+    <div class="pote-grid" id="pote-grid"></div>
 
-      <!-- Chocolate com Morango -->
-      <article class="pote-card">
-        <div class="pote-badge">⭐ Mais Vendido</div>
-        <div class="pote-img"><img src="img/chocola.jpeg" alt="Bolo de Pote Chocolate com Morango" loading="lazy"></div>
-        <div class="pote-body">
-          <h3 class="pote-name">Chocolate c/ Morango</h3>
-          <p class="pote-desc">Creme de chocolate intenso com morangos frescos selecionados. Perfeito para qualquer hora!</p>
-          <div class="pote-foot">
-            <span class="pote-price">R$ 15</span>
-            <button class="pote-order" onclick="window.open('https://wa.me/5511951799052?text=Ol%C3%A1!%20Quero%201%20Bolo%20de%20Pote%20de%20Chocolate%20c%2F%20Morango%20(R%24%2012%2C00).','_blank')">
-              <svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg>
-              Pedir
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Paçoca -->
-      <article class="pote-card">
-        <div class="pote-img"><img src="img/paç.jpeg" alt="Bolo de Pote Paçoca" loading="lazy"></div>
-        <div class="pote-body">
-          <h3 class="pote-name">Paçoca</h3>
-          <p class="pote-desc">Creme suave de amendoim com crocante de paçoca artesanal. Sabor marcante e irresistível!</p>
-          <div class="pote-foot">
-            <span class="pote-price">R$ 10</span>
-            <button class="pote-order" onclick="window.open('https://wa.me/5511951799052?text=Ol%C3%A1!%20Quero%201%20Bolo%20de%20Pote%20de%20Pa%C3%A7oca%20(R%24%2010%2C00).','_blank')">
-              <svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg>
-              Pedir
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Ninho -->
-      <article class="pote-card">
-        <div class="pote-img"><img src="img/pinhores.jpeg" alt="Bolo de Pote Ninho" loading="lazy"></div>
-        <div class="pote-body">
-          <h3 class="pote-name">Ninho</h3>
-          <p class="pote-desc">Recheio aveludado de Leite Ninho verdadeiro. Leve, cremoso e absolutamente viciante!</p>
-          <div class="pote-foot">
-            <span class="pote-price">R$ 12</span>
-            <button class="pote-order" onclick="window.open('https://wa.me/5511951799052?text=Ol%C3%A1!%20Quero%201%20Bolo%20de%20Pote%20de%20Ninho%20(R%24%2010%2C00).','_blank')">
-              <svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg>
-              Pedir
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Prestígio -->
-      <article class="pote-card">
-        <div class="pote-img"><img src="img/prest.jpeg" alt="Bolo de Pote Prestígio" loading="lazy"></div>
-        <div class="pote-body">
-          <h3 class="pote-name">Prestígio</h3>
-          <p class="pote-desc">Coco ralado úmido com calda cremosa de chocolate meio amargo. O clássico que nunca sai de moda!</p>
-          <div class="pote-foot">
-            <span class="pote-price">R$ 12</span>
-            <button class="pote-order" onclick="window.open('https://wa.me/5511951799052?text=Ol%C3%A1!%20Quero%201%20Bolo%20de%20Pote%20de%20Prest%C3%ADgio%20(R%24%2010%2C00).','_blank')">
-              <svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg>
-              Pedir
-            </button>
-          </div>
-        </div>
-      </article>
+    <div id="dia-wrap" style="display:none">
+      <h3 class="sub-title">🎂 Bolos prontos do dia</h3>
+      <p class="sub-note">Bolos inteiros de pronta entrega. Quando acabam, acabam!</p>
+      <div class="pote-grid" id="dia-grid"></div>
     </div>
 
     <!-- CTA Box -->
@@ -793,6 +762,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
       <figure><img src="img/casal.jpg" alt="Bolos Stitch e Angel gotejados" loading="lazy"><figcaption>Stitch</figcaption></figure>
       <figure><img src="img/urso.jpg" alt="Bolo Ursinho Pooh mesversário" loading="lazy"><figcaption>Ursinho</figcaption></figure>
       <figure><img src="img/kitkat.jpg" alt="Bolo Kit Kat com morangos e laço vermelho" loading="lazy"><figcaption>Kit Kat</figcaption></figure>
+      <figure><img src="img/corinthians.jpg" alt="Bolo Corinthians preto e branco" loading="lazy"><figcaption>Futebol</figcaption></figure>
       <figure><img src="img/laco.jpg" alt="Bolo vintage branco com laços pretos" loading="lazy"><figcaption>Vintage</figcaption></figure>
       <figure><img src="img/monstros.jpg" alt="Bolo Monstros S.A." loading="lazy"><figcaption>Monstros S.A.</figcaption></figure>
     </div>
@@ -907,7 +877,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
       <div class="dep-card">
         <div class="dep-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="dep-text">"O melhor bolo de pote que já comi! Recheio super cremoso e nada enjoativo. Já pedi três vezes essa semana e a qualidade é sempre impecável!"</p>
-        <div class="dep-foot"><div class="dep-av">A</div><div><div class="dep-name">Theo h.</div><div class="dep-loc">Moradora do Sonata</div></div></div>
+        <div class="dep-foot"><div class="dep-av">A</div><div><div class="dep-name">Ana Paula M.</div><div class="dep-loc">Moradora do Sonata</div></div></div>
       </div>
       <div class="dep-card">
         <div class="dep-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -917,7 +887,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
       <div class="dep-card">
         <div class="dep-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="dep-text">"Super prático de pedir pelo WhatsApp! Sem espera, sempre chega perfeito. Peço toda semana. A Da Paz é a melhor!"</p>
-        <div class="dep-foot"><div class="dep-av">F</div><div><div class="dep-name">Laine P.</div><div class="dep-loc">Cliente fiel — Sonata</div></div></div>
+        <div class="dep-foot"><div class="dep-av">F</div><div><div class="dep-name">Fernanda R.</div><div class="dep-loc">Cliente fiel — Sonata</div></div></div>
       </div>
     </div>
     <div style="text-align:center;margin-top:36px;padding:32px;background:#fff;border:1.5px solid var(--border);border-radius:20px">
@@ -984,7 +954,7 @@ footer{background:linear-gradient(145deg,#2D1010 0%,#1A0505 100%);color:var(--pr
     <div class="chat-head">
       <div class="chat-av">🎂</div>
       <div class="chat-head-info">
-        <h3>Carol — Da Paz Confeitaria</h3>
+        <h3>Clara — Da Paz Confeitaria</h3>
         <div class="chat-status">
           <div class="status-dot"></div>
           <span>Online · Responde em instantes</span>
@@ -1070,6 +1040,186 @@ function closeMenu(){document.getElementById('mob-menu').classList.remove('open'
   resetProg();
 })();
 
+
+// ══════════════════════════════════════════════════
+//  CARDÁPIO DO DIA (lido da planilha Google)
+//  Cole abaixo o link CSV publicado da sua planilha.
+//  Se ficar vazio, o site usa a lista padrão (PADRAO).
+// ══════════════════════════════════════════════════
+var PLANILHA_URL='';
+
+var PADRAO=[
+  {tipo:'pote',nome:'Brigadeiro Gourmet',descricao:'Massa de chocolate, brigadeiro artesanal e granulado nobre. O favorito absoluto!',preco:12,quantidade:null,foto:'img/rosa.jpg',selo:'⭐ Mais Vendido'},
+  {tipo:'pote',nome:'Chocolate c/ Morango',descricao:'Creme de chocolate intenso com morangos frescos selecionados. Perfeito para qualquer hora!',preco:12,quantidade:null,foto:'img/casal.jpg',selo:'⭐ Mais Vendido'},
+  {tipo:'pote',nome:'Paçoca',descricao:'Creme suave de amendoim com crocante de paçoca artesanal. Sabor marcante e irresistível!',preco:10,quantidade:null,foto:'img/urso.jpg',selo:''},
+  {tipo:'pote',nome:'Ninho',descricao:'Recheio aveludado de Leite Ninho verdadeiro. Leve, cremoso e absolutamente viciante!',preco:10,quantidade:null,foto:'img/stitch.jpg',selo:''},
+  {tipo:'pote',nome:'Prestígio',descricao:'Coco ralado úmido com calda cremosa de chocolate meio amargo. O clássico que nunca sai de moda!',preco:10,quantidade:null,foto:'img/kitkat.jpg',selo:''}
+];
+
+(function(){
+  var WA_NUM='5511951799052';
+  var CHAVE='dapaz_cardapio';
+
+  function semAcento(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
+
+  function parseCSV(text){
+    var rows=[],row=[],cur='',q=false,i,c;
+    text=text.replace(/^\uFEFF/,'');
+    for(i=0;i<text.length;i++){
+      c=text[i];
+      if(q){
+        if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else q=false; }
+        else cur+=c;
+      } else if(c==='"'){ q=true; }
+      else if(c===','){ row.push(cur);cur=''; }
+      else if(c==='\n'||c==='\r'){
+        if(c==='\r'&&text[i+1]==='\n')i++;
+        row.push(cur);cur='';rows.push(row);row=[];
+      } else cur+=c;
+    }
+    if(cur!==''||row.length){row.push(cur);rows.push(row);}
+    return rows;
+  }
+
+  function num(v){
+    var s=String(v==null?'':v).replace(/[^\d,.\-]/g,'').replace(',','.');
+    var n=parseFloat(s);
+    return isNaN(n)?null:n;
+  }
+
+  function toItens(rows){
+    if(rows.length<2)return [];
+    var head=rows[0].map(function(k){return semAcento(k).replace(/[^a-z]/g,'');}),out=[];
+    for(var r=1;r<rows.length;r++){
+      var o={};
+      head.forEach(function(k,i){o[k]=(rows[r][i]||'').trim();});
+      if(!o.nome)continue;
+      var ativo=semAcento(o.ativo);
+      if(ativo==='nao'||ativo==='n'||ativo==='0'||ativo==='false')continue;
+      var tipo=semAcento(o.tipo)==='bolo'?'bolo':'pote';
+      out.push({
+        tipo:tipo,
+        nome:o.nome,
+        descricao:o.descricao||'',
+        preco:num(o.preco),
+        quantidade:o.quantidade===''?null:num(o.quantidade),
+        foto:o.foto||'',
+        selo:o.selo||''
+      });
+    }
+    return out;
+  }
+
+  function fmtPreco(n){
+    if(n==null)return 'Consulte';
+    return 'R$ '+(Math.round(n)===n?String(n):n.toFixed(2).replace('.',','));
+  }
+  window.fmtPreco=fmtPreco;
+
+  function esgotado(i){return i.quantidade!==null&&i.quantidade<=0;}
+  window.itemEsgotado=esgotado;
+
+  function el(tag,cls,txt){
+    var e=document.createElement(tag);
+    if(cls)e.className=cls;
+    if(txt!=null)e.textContent=txt;
+    return e;
+  }
+
+  function card(i){
+    var off=esgotado(i);
+    var poucos=!off&&i.quantidade!==null&&i.quantidade<=3;
+    var art=el('article','pote-card'+(off?' off':''));
+
+    if(i.selo&&!off){art.appendChild(el('div','pote-badge',i.selo));}
+
+    var imgw=el('div','pote-img');
+    var ph=el('div','pote-ph',i.tipo==='bolo'?'🎂':'🍮');
+    imgw.appendChild(ph);
+    if(i.foto){
+      var im=document.createElement('img');
+      im.alt=i.nome;im.loading='lazy';
+      im.onload=function(){ph.style.display='none';};
+      im.onerror=function(){im.remove();};
+      im.src=i.foto;
+      imgw.appendChild(im);
+    }
+    if(off)imgw.appendChild(el('div','pote-off','Esgotado'));
+    art.appendChild(imgw);
+
+    var body=el('div','pote-body');
+    body.appendChild(el('h3','pote-name',i.nome));
+    if(i.descricao)body.appendChild(el('p','pote-desc',i.descricao));
+    if(i.quantidade!==null){
+      var st=off?'Esgotado por hoje':(poucos?'🔥 Restam só '+i.quantidade:'✅ '+i.quantidade+' disponíveis hoje');
+      body.appendChild(el('div','pote-stock'+(off?' off':(poucos?' low':'')),st));
+    }
+    var foot=el('div','pote-foot');
+    foot.appendChild(el('span','pote-price',fmtPreco(i.preco)));
+    var btn=el('button','pote-order');
+    if(off){
+      btn.disabled=true;btn.textContent='Esgotado';
+    } else {
+      btn.innerHTML='<svg width="13" height="13" fill="currentColor"><use href="#i-wa"/></svg> Pedir';
+      btn.onclick=function(){
+        var txt=i.tipo==='bolo'
+          ? 'Olá! Quero o '+i.nome+(i.preco!=null?' ('+fmtPreco(i.preco)+')':'')+'.'
+          : 'Olá! Quero 1 Bolo de Pote de '+i.nome+(i.preco!=null?' ('+fmtPreco(i.preco)+')':'')+'.';
+        window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(txt),'_blank');
+      };
+    }
+    foot.appendChild(btn);
+    body.appendChild(foot);
+    art.appendChild(body);
+    return art;
+  }
+
+  function ordenar(arr){
+    return arr.filter(function(i){return !esgotado(i);}).concat(arr.filter(esgotado));
+  }
+
+  function render(itens){
+    window.CARDAPIO=itens;
+    var potes=ordenar(itens.filter(function(i){return i.tipo==='pote';}));
+    var bolos=ordenar(itens.filter(function(i){return i.tipo==='bolo';}));
+
+    var g=document.getElementById('pote-grid');
+    g.innerHTML='';
+    potes.forEach(function(i){g.appendChild(card(i));});
+
+    var w=document.getElementById('dia-wrap'),dg=document.getElementById('dia-grid');
+    dg.innerHTML='';
+    bolos.forEach(function(i){dg.appendChild(card(i));});
+    w.style.display=bolos.length?'block':'none';
+
+    var s=document.getElementById('pote-status');
+    if(PLANILHA_URL){
+      var d=new Date();
+      s.textContent='🕒 Disponibilidade de hoje · atualizado às '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+    } else s.textContent='';
+  }
+
+  function carregar(){
+    if(!PLANILHA_URL){render(PADRAO);return;}
+    var url=PLANILHA_URL+(PLANILHA_URL.indexOf('?')>-1?'&':'?')+'t='+Date.now();
+    fetch(url).then(function(r){if(!r.ok)throw new Error('http');return r.text();})
+    .then(function(txt){
+      var itens=toItens(parseCSV(txt));
+      if(!itens.length)throw new Error('vazio');
+      try{localStorage.setItem(CHAVE,JSON.stringify(itens));}catch(e){}
+      render(itens);
+    })
+    .catch(function(){
+      var salvo=null;
+      try{salvo=JSON.parse(localStorage.getItem(CHAVE));}catch(e){}
+      render(salvo&&salvo.length?salvo:PADRAO);
+    });
+  }
+  window.carregarCardapio=carregar;
+  carregar();
+  setInterval(carregar,120000);
+})();
+
 // ── CHAT — Clara ────────────────────────────────
 (function(){
   var WA='5511951799052';
@@ -1080,6 +1230,27 @@ function closeMenu(){document.getElementById('mob-menu').classList.remove('open'
   var started=false;
   var pedido={tipo:'',sabor:'',qty:1,preco:0,nome:'',horario:'',obs:''};
   var etapa='inicio';
+
+  function potesDisp(){
+    return (window.CARDAPIO||[]).filter(function(i){return i.tipo==='pote'&&!window.itemEsgotado(i);});
+  }
+  function saborOpts(){
+    return potesDisp().map(function(i){return '🍮 '+i.nome+(i.preco!=null?' — '+window.fmtPreco(i.preco):'');});
+  }
+  function listaPrecos(){
+    return potesDisp().map(function(i){return '• '+i.nome+' — '+window.fmtPreco(i.preco);}).join('\n');
+  }
+  function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function acharSabor(t){
+    var tn=norm(t),lista=potesDisp(),achou=null,i,j;
+    for(i=0;i<lista.length&&!achou;i++){ if(tn.indexOf(norm(lista[i].nome))>-1)achou=lista[i]; }
+    for(i=0;i<lista.length&&!achou;i++){
+      var ws=norm(lista[i].nome).split(/\s+/).filter(function(w){return w.length>=4;});
+      for(j=0;j<ws.length;j++){ if(tn.indexOf(ws[j])>-1){achou=lista[i];break;} }
+    }
+    if(!achou)return null;
+    return {nome:achou.nome,preco:window.fmtPreco(achou.preco),cents:Math.round((achou.preco||0)*100)};
+  }
 
   function hora(){var d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');}
 
@@ -1130,14 +1301,19 @@ function closeMenu(){document.getElementById('mob-menu').classList.remove('open'
 
     if(etapa==='inicio'){
       if(t.includes('pote')||t.includes('pedir')||t.includes('pronta')||t.includes('retirada')){
-        etapa='sabor';
-        addMsg('bot','Ótimo! 🍮 Vamos montar seu pedido de Bolo de Pote!\n\nTodos são feitos fresquinhos no dia! 😋\n\nQual sabor você prefere hoje?',500);
-        setTimeout(function(){setOpts(['🍫 Brigadeiro Gourmet — R$12','🍓 Chocolate c/ Morango — R$12','🥜 Paçoca — R$10','🤍 Ninho — R$10','🥥 Prestígio — R$10']);},3200);
+        if(!potesDisp().length){
+          addMsg('bot','Poxa, os bolos de pote de hoje já esgotaram! 😢\n\nMas você pode encomendar para outro dia ou chamar a gente no WhatsApp.',500);
+          setTimeout(function(){setOpts(['🎉 Encomendar Bolo de Festa']);},2500);
+        } else {
+          etapa='sabor';
+          addMsg('bot','Ótimo! 🍮 Vamos montar seu pedido de Bolo de Pote!\n\nTodos são feitos fresquinhos no dia! 😋\n\nQual sabor você prefere hoje?',500);
+          setTimeout(function(){setOpts(saborOpts());},3200);
+        }
       } else if(t.includes('encomenda')||t.includes('aniversário')||t.includes('festa')||t.includes('personaliz')||t.includes('temático')||t.includes('vulcão')||t.includes('docinho')||t.includes('kit')){
         etapa='encomenda_info';
         addMsg('bot','Que incrível! Adoramos criar bolos especiais! 🎉\n\nPara encomendas precisamos de pelo menos 48h de antecedência. Me conta mais sobre o que você precisa:\n\n• Qual é a ocasião? (aniversário, casamento, reunião...)\n• Quantas pessoas?\n• Data e horário do evento?\n• Tem algum tema ou referência?\n\nMe conta tudo! 💕',500);
       } else if(t.includes('preço')||t.includes('valor')||t.includes('quanto')){
-        addMsg('bot','Nossos preços são especiais! 😊\n\n🍮 *Bolos de Pote* (Pronta Entrega):\n• Brigadeiro Gourmet — R$ 12,00\n• Chocolate c/ Morango — R$ 12,00\n• Paçoca — R$ 10,00\n• Ninho — R$ 10,00\n• Prestígio — R$ 10,00\n\n🎂 *Bolos de Festa & Personalizados:*\nOrçamento sob medida — peça pelo WhatsApp!\n\nQuer fazer um pedido agora?',500);
+        addMsg('bot','Nossos preços são especiais! 😊\n\n🍮 *Bolos de Pote* (Pronta Entrega):\n'+listaPrecos()+'\n\n🎂 *Bolos de Festa & Personalizados:*\nOrçamento sob medida — peça pelo WhatsApp!\n\nQuer fazer um pedido agora?',500);
         setTimeout(function(){setOpts(['Quero um Bolo de Pote!','Quero um Bolo de Festa!']);},5000);
       } else if(t.includes('horário')||t.includes('funciona')||t.includes('atende')){
         addMsg('bot','Horários e detalhes do pedido a gente combina direto pelo WhatsApp! 💬\n\nPosso te ajudar com mais alguma coisa?',500);
@@ -1148,18 +1324,7 @@ function closeMenu(){document.getElementById('mob-menu').classList.remove('open'
       }
 
     } else if(etapa==='sabor'){
-      var sabores={
-        'brigadeiro':{nome:'Brigadeiro Gourmet',preco:'R$ 12,00',cents:1200},
-        'chocolate':{nome:'Chocolate c/ Morango',preco:'R$ 12,00',cents:1200},
-        'morango':{nome:'Chocolate c/ Morango',preco:'R$ 12,00',cents:1200},
-        'paçoca':{nome:'Paçoca',preco:'R$ 10,00',cents:1000},
-        'pacoca':{nome:'Paçoca',preco:'R$ 10,00',cents:1000},
-        'ninho':{nome:'Ninho',preco:'R$ 10,00',cents:1000},
-        'prestígio':{nome:'Prestígio',preco:'R$ 10,00',cents:1000},
-        'prestigio':{nome:'Prestígio',preco:'R$ 10,00',cents:1000}
-      };
-      var achado=null;
-      Object.keys(sabores).forEach(function(k){if(t.includes(k))achado=sabores[k];});
+      var achado=acharSabor(t);
       if(achado){
         pedido.sabor=achado.nome;pedido.preco=achado.preco;pedido.cents=achado.cents;
         etapa='qty';
@@ -1167,7 +1332,7 @@ function closeMenu(){document.getElementById('mob-menu').classList.remove('open'
         setTimeout(function(){setOpts(['1 pote','2 potes','3 potes','4 potes','5 ou mais']);},2200);
       } else {
         addMsg('bot','Hmm, não entendi bem. Qual sabor você prefere?',500);
-        setTimeout(function(){setOpts(['🍫 Brigadeiro Gourmet','🍓 Chocolate c/ Morango','🥜 Paçoca','🤍 Ninho','🥥 Prestígio']);},1800);
+        setTimeout(function(){setOpts(saborOpts());},1800);
       }
 
     } else if(etapa==='qty'){

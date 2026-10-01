@@ -560,7 +560,15 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
 }
 .sr-only-seo{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 </style>
-<script>\n// Analytics hooks: works with GA4 when gtag is configured, without requiring a measurement ID.\nwindow.trackDapazEvent=function(name,params){try{if(typeof window.gtag==='function')window.gtag('event',name,params||{});}catch(e){}};\n</script>\n<script type="application/ld+json">
+<script>
+// Analytics hooks: works with GA4 when gtag is configured.
+window.trackDapazEvent = function(name, params) {
+  try {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  } catch (e) {}
+};
+</script>
+<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Como faço um pedido?","acceptedAnswer":{"@type":"Answer","text":"Consulte o cardápio, adicione os produtos ao pedido e envie as informações pelo WhatsApp para confirmar disponibilidade e detalhes."}},
 {"@type":"Question","name":"Com quanto tempo devo encomendar?","acceptedAnswer":{"@type":"Answer","text":"Para bolos personalizados, recomendamos solicitar com pelo menos 48 horas de antecedência. A confirmação depende da disponibilidade da equipe."}},

@@ -560,7 +560,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
 }
 .sr-only-seo{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 </style>
-</head>
+<script>\n// Analytics hooks: works with GA4 when gtag is configured, without requiring a measurement ID.\nwindow.trackDapazEvent=function(name,params){try{if(typeof window.gtag==='function')window.gtag('event',name,params||{});}catch(e){}};\n</script>\n</head>
 <body>
 <div id="mobile-sales-cta" style="position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;display:none;gap:8px;"><a href="#pote" style="flex:1;text-align:center;background:#B5485A;color:#fff;padding:13px 16px;border-radius:999px;font-weight:700;box-shadow:0 8px 24px rgba(26,10,10,.22);">🍰 Ver bolos de pote</a><a href="https://wa.me/5511951799052?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Da%20Paz%20Confeitaria%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:50px;background:#25D366;color:#fff;border-radius:999px;font-size:22px;box-shadow:0 8px 24px rgba(37,211,102,.25);" aria-label="Pedir pelo WhatsApp">◉</a></div><style>@media(max-width:767px){#mobile-sales-cta{display:flex}body{padding-bottom:76px}}</style>
 
@@ -1181,7 +1181,7 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
     });
     gravarCarrinho();
   }
-  function mudar(k,d){
+  function mudar(k,d){\n    var antes=carrinho[k]||0;
     var i=porChave[k];if(!i)return;
     var q=Math.max(0,Math.min(maxQtd(i),(carrinho[k]||0)+d));
     if(q===0)delete carrinho[k];else carrinho[k]=q;
@@ -1247,7 +1247,7 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
     if(document.getElementById('cart-overlay').classList.contains('open'))renderCarrinho();
   }
 
-  function abrirCarrinho(){
+  function abrirCarrinho(){\n    window.trackDapazEvent('view_cart');
     try{var n=localStorage.getItem(K_NOME);if(n&&!document.getElementById('cart-nome').value)document.getElementById('cart-nome').value=n;}catch(e){}
     renderCarrinho();
     document.getElementById('cart-overlay').classList.add('open');
@@ -1547,7 +1547,7 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
       addMsg('bot','Perfeito! Já estou montando seu contato! 🎂\n\nVou te redirecionar para o WhatsApp com todas as informações para o nosso time preparar um orçamento exclusivo para você!',500);
       setTimeout(function(){
         var msg='Olá, Da Paz Confeitaria! 🎂\nGostaria de fazer um orçamento para encomenda:\n\n'+txt+'\n\n━━━━━━━━━━━━━━━━━━\nAguardo o orçamento! 💕';
-        window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+        window.trackDapazEvent('generate_lead',{lead_type:'personalized_cake'});\n        window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
         chatClose();
       },2500);
     }

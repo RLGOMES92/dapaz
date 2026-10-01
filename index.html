@@ -1262,7 +1262,7 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
     if(document.getElementById('cart-overlay').classList.contains('open'))renderCarrinho();
   }
 
-  function abrirCarrinho(){\n    window.trackDapazEvent('view_cart');
+  function abrirCarrinho(){\n    window.trackDapazEvent('view_cart',{currency:'BRL'});
     try{var n=localStorage.getItem(K_NOME);if(n&&!document.getElementById('cart-nome').value)document.getElementById('cart-nome').value=n;}catch(e){}
     renderCarrinho();
     document.getElementById('cart-overlay').classList.add('open');
@@ -1282,6 +1282,7 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
     });
     if(!linhas.length)return;
     var r=resumo();
+    window.trackDapazEvent('begin_checkout',{items:linhas.length,value:r.t,currency:'BRL'});
     var msg=['Olá, Da Paz Confeitaria! 🎂','Quero fazer um pedido:','',linhas.join('\n'),'',
       '💰 *Total:* '+fmtMoney(r.t)+(r.semPreco?' (+ itens a consultar)':''),
       '👤 *Nome:* '+nome];
@@ -1562,7 +1563,8 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
       addMsg('bot','Perfeito! Já estou montando seu contato! 🎂\n\nVou te redirecionar para o WhatsApp com todas as informações para o nosso time preparar um orçamento exclusivo para você!',500);
       setTimeout(function(){
         var msg='Olá, Da Paz Confeitaria! 🎂\nGostaria de fazer um orçamento para encomenda:\n\n'+txt+'\n\n━━━━━━━━━━━━━━━━━━\nAguardo o orçamento! 💕';
-        window.trackDapazEvent('generate_lead',{lead_type:'personalized_cake'});\n        window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+        window.trackDapazEvent('generate_lead',{lead_type:'personalized_cake'});\n        window.trackDapazEvent('purchase_intent',{lead_type:'personalized_cake',channel:'whatsapp'});
+        window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
         chatClose();
       },2500);
     }

@@ -17,6 +17,8 @@
 <meta name="theme-color" content="#B5485A">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="Vila Andrade, São Paulo">
+<meta name="format-detection" content="telephone=yes">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Bakery","name":"Da Paz Confeitaria","description":"Confeitaria artesanal especializada em bolos de pote e bolos personalizados por encomenda no Condomínio Sonata, Vila Andrade, São Paulo.","url":"https://rlgomes92.github.io/dapaz/","telephone":"+55-11-95179-9052","priceRange":"R$ 10 – R$ 12","image":"https://rlgomes92.github.io/dapaz/img/rosa.jpg","areaServed":[{"@type":"Place","name":"Condomínio Sonata"},{"@type":"Place","name":"Vila Andrade"},{"@type":"Place","name":"Morumbi"},{"@type":"Place","name":"Panamby"},{"@type":"Place","name":"Jardim Sul"},{"@type":"Place","name":"Campo Limpo"},{"@type":"City","name":"São Paulo"}],"address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/dapaz_confeitaria"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Cardápio Da Paz","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Product","name":"Bolo de Pote Brigadeiro Gourmet"},"price":"12.00","priceCurrency":"BRL"},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Bolo de Pote Chocolate c/ Morango"},"price":"12.00","priceCurrency":"BRL"},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Bolo de Pote Paçoca"},"price":"10.00","priceCurrency":"BRL"},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Bolo de Pote Ninho"},"price":"10.00","priceCurrency":"BRL"},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Bolo de Pote Prestígio"},"price":"10.00","priceCurrency":"BRL"}]}}
@@ -1261,7 +1263,7 @@ PADRAO.forEach(function(i){FOTOS_PADRAO[i.nome.toLowerCase()]=i.foto;});
       '💰 *Total:* '+fmtMoney(r.t)+(r.semPreco?' (+ itens a consultar)':''),
       '👤 *Nome:* '+nome];
     if(obs)msg.push('📝 *Obs:* '+obs);
-    msg.push('','Pode confirmar a disponibilidade? 💕');
+    msg.push('','📍 Atendimento: Vila Andrade e região.','Pode confirmar a disponibilidade e a melhor forma de entrega/retirada? 💕');
     window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg.join('\n')),'_blank');
   }
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rlgomes92.github.io/dapaz/sitemap.xml

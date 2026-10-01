@@ -201,6 +201,12 @@ section{padding:80px 0}
 .trust-bar-inner{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
 .trust-item{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--dark2)}
 .trust-item svg{flex-shrink:0}
+.local-sales-strip{background:#FFF1EC;border-bottom:1px solid var(--border);padding:11px 0}
+.local-sales-strip .container{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;text-align:center;font-size:12px;color:var(--mid)}
+.local-sales-strip strong{color:var(--dark2)}
+.local-sales-strip a{font-weight:800;color:var(--primary);margin-left:4px}
+@media(max-width:600px){.local-sales-strip .container{font-size:11px;line-height:1.5}.local-sales-strip span:nth-of-type(2){display:none}}
+
 
 /* ═══════════════════════════════════════════════════
    BOLOS DE POTE
@@ -550,6 +556,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
   .pote-ctl .stepper button{flex:0 0 40px;height:34px}
   .pote-ctl .stepper span{flex:1}
 }
+.sr-only-seo{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 </style>
 </head>
 <body>
@@ -562,7 +569,8 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
 </svg>
 
 <!-- SEO H1 oculto -->
-<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Da Paz Confeitaria — Bolos de Pote no Condomínio Sonata e Bolos Personalizados por Encomenda em São Paulo</h1>
+<!-- H1 principal visível para usuários e buscadores -->
+<h1 class="sr-only-seo">Da Paz Confeitaria em Vila Andrade — Bolos de Pote, Bolos Personalizados e Encomendas</h1>
 
 <!-- ═══════════════════════════════════════════════
      NAVBAR
@@ -617,7 +625,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
         <p class="slide-desc">Massa fofinha de chocolate com camadas generosas de brigadeiro artesanal e granulado nobre. Feito hoje!</p>
         <div class="slide-price-tag">
           <span class="slide-price-from">por apenas</span>
-          <span class="slide-price-val">R$ 13</span>
+          <span class="slide-price-val">R$ 12</span>
         </div>
         <div class="slide-actions">
           <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
@@ -635,7 +643,7 @@ h1,h2,h3,h4,p{overflow-wrap:break-word}
         <p class="slide-desc">Creme de chocolate intenso com morangos frescos e selecionados. Uma combinação irresistível!</p>
         <div class="slide-price-tag">
           <span class="slide-price-from">por apenas</span>
-          <span class="slide-price-val">R$ 15</span>
+          <span class="slide-price-val">R$ 12</span>
         </div>
         <div class="slide-actions">
           <button class="btn btn-primary btn-lg" onclick="document.getElementById('pote').scrollIntoView({behavior:'smooth'})">🍮 Pedir Agora</button>
